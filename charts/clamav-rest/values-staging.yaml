@@ -19,6 +19,17 @@ resources:
     cpu: 1
     memory: 4Gi
 
+# clamav parameters
+# MAX_FILE_SIZE	Do not scan files larger than this size. Reflects the vsix file upload limit
+# MAX_SCAN_SIZE	Total data scanned per file. Reflects the vsix file upload limit
+# MAX_RECURSION	Maximum nested archive depth. Important because VSCode extensions may contain nested archives.
+# SIGNATURE_CHECKS	How many times per day to refresh malware signature DB.	Ensures signature database remains up to date.
+clamavEnv:
+  MAX_FILE_SIZE: "512M"
+  MAX_SCAN_SIZE: "512M"
+  MAX_RECURSION: "16"
+  SIGNATURE_CHECKS: "2"
+
 route:
   timeout: 30s
 

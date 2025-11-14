@@ -27,6 +27,11 @@ spec:
             - name: https
               containerPort: 9443
               protocol: TCP
+          env:
+            {{- range $name, $value := .Values.clamavEnv }}
+            - name: {{ $name }}
+              value: {{ $value | quote }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
